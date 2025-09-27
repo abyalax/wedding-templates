@@ -15,7 +15,9 @@
   margin: 10px;
   background: var(--lightcream);
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
 }
 .simply-countdown > .simply-section .simply-amount,
 .simply-countdown > .simply-section .simply-word {
@@ -24,39 +26,32 @@
 }
 
 .simply-countdown > .simply-section .simply-amount {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 
-
 @media (max-width: 992px) {
-
   .simply-countdown > .simply-section {
-      padding: 70px;
+    padding: 70px;
   }
 }
 
-
 @media (max-width: 768px) {
-
   .simply-countdown > .simply-section {
-      padding: 60px;
-      margin: 5px;
+    padding: 60px;
+    margin: 5px;
   }
 }
 
 @media (max-width: 576px) {
-
   .simply-countdown > .simply-section {
-      padding: 45px;
-      margin: 3px;
+    padding: 45px;
+    margin: 3px;
   }
 }
 
 @media (max-width: 450px) {
-
   .simply-countdown > .simply-section {
-      padding: 35px;
-      margin: 3px;
+    padding: 35px;
+    margin: 3px;
   }
 }
-

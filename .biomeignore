@@ -1,0 +1,6 @@
+/**/dist
+./**/dist
+./**/dist/*
+gh-pages
+gh-pages-temp
+node_modules

@@ -1,11 +1,11 @@
 .landing-pengantin {
-    font-size: 4rem;
-    margin-bottom: -.5rem;
-    margin-top: -.5rem;
+  font-size: 4rem;
+  margin-bottom: -0.5rem;
+  margin-top: -0.5rem;
 }
 
 @media screen and (max-width: 500px) {
-    .landing-pengantin {
-        font-size: 0.2rem;
-    }
+  .landing-pengantin {
+    font-size: 0.2rem;
+  }
 }

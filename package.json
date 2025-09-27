@@ -4,13 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "biome lint --write .",
+    "format": "biome format --write .",
+    "build": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.15.1",
   "devDependencies": {
-    "@types/node": "^24.5.2"
+    "@biomejs/biome": "2.2.4",
+    "@types/node": "^24.5.2",
+    "lefthook": "1.13.4"
   }
 }

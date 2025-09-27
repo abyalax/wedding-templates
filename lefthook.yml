@@ -1,0 +1,6 @@
+pre-commit:
+  commands:
+    check:
+      glob: "**/*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc,d.ts,d.cts,d.mts}"
+      run: pnpm lint && pnpm format
+      stage_fixed: true
