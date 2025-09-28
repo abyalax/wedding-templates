@@ -7,8 +7,44 @@ const templates = ['classic'];
 const GH_PAGES_BRANCH = 'gh-pages';
 const TEMP_DIR = 'gh-pages-temp';
 
+// exclude sensitive files
+const EXCLUDE_PATTERNS = ['.env', '.env.*', '*.secret', '*.key'];
+
 function run(cmd: string, cwd?: string) {
   execSync(cmd, { stdio: 'inherit', cwd: cwd ?? process.cwd() });
+}
+
+function shouldExclude(filePath: string) {
+  return EXCLUDE_PATTERNS.some(pattern => {
+    const regex = new RegExp(
+      '^' +
+      pattern
+        .replace(/\./g, '\\.')
+        .replace(/\*/g, '.*') +
+      '$'
+    );
+    return regex.test(path.basename(filePath));
+  });
+}
+
+function copyFiltered(src: string, dest: string) {
+  const entries = fs.readdirSync(src, { withFileTypes: true });
+  for (const entry of entries) {
+    const srcPath = path.join(src, entry.name);
+    const destPath = path.join(dest, entry.name);
+
+    if (shouldExclude(entry.name)) {
+      console.log(`❌ Excluding file: ${srcPath}`);
+      continue;
+    }
+
+    if (entry.isDirectory()) {
+      fs.mkdirSync(destPath, { recursive: true });
+      copyFiltered(srcPath, destPath);
+    } else {
+      fs.copyFileSync(srcPath, destPath);
+    }
+  }
 }
 
 // 1️⃣ Build semua template
@@ -28,8 +64,7 @@ templates.forEach((tpl) => {
   if (fs.existsSync(dest)) fs.rmSync(dest, { recursive: true, force: true });
   fs.mkdirSync(dest, { recursive: true });
 
-  // copy semua file
-  fs.cpSync(src, dest, { recursive: true });
+  copyFiltered(src, dest);
 });
 
 // 4️⃣ Commit & push
