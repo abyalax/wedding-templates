@@ -1,6 +1,9 @@
 pre-commit:
   commands:
     check:
-      glob: "**/*.{js,ts,cjs,mjs,jsx,tsx,json,jsonc,d.ts,d.cts,d.mts}"
+      glob:
+        - "**/*.{js,ts,jsx,tsx,json,d.ts}"
+        - "!build/**"
+        - "!dist/**"
       run: pnpm lint && pnpm format
       stage_fixed: true
