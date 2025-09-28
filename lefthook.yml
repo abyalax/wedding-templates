@@ -5,5 +5,5 @@ pre-commit:
         - "**/*.{js,ts,jsx,tsx,json,d.ts}"
         - "!build/**"
         - "!dist/**"
-      run: pnpm lint && pnpm format
+      run: pnpm lint && pnpm format && pnpm build
       stage_fixed: true
