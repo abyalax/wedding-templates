@@ -1,9 +1,12 @@
 pre-commit:
   commands:
-    check:
+    lint:
       glob:
         - "**/*.{js,ts,jsx,tsx,json,d.ts}"
         - "!build/**"
         - "!dist/**"
-      run: pnpm lint && pnpm format && pnpm build
+      run: pnpm lint && pnpm format
       stage_fixed: true
+
+    build:
+      run: pnpm build
