@@ -67,9 +67,16 @@ templates.forEach((tpl) => {
   copyFiltered(src, dest);
 });
 
-// 4️⃣ Commit & push
-run('git add .', TEMP_DIR);
-run('git commit -m "Deploy templates"', TEMP_DIR);
+try {
+  // 4️⃣ Commit & push
+  run('git add .', TEMP_DIR);
+  run('git diff --quiet', TEMP_DIR); // check perubahan
+  run('git commit -m "Deploy templates"', TEMP_DIR);
+} catch {
+  console.log('ℹ️ No changes to commit.');
+  process.exit(0);
+}
+
 run(`git push origin ${GH_PAGES_BRANCH}`, TEMP_DIR);
 
 console.log('✅ All templates deployed to GH Pages!');

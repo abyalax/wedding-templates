@@ -13,6 +13,25 @@ export class ChatBot implements Module {
 
     let isModalOpen = false;
 
+    const fetchPost = async () => {
+      const response = await fetch('http://localhost:3000/api/1/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: 'Halo', guestId: 1 }),
+      });
+      return response.json();
+    };
+
+    fetchPost()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
     // Function to toggle modal visibility
     function toggleModal(state: boolean) {
       isModalOpen = state;
